@@ -21,9 +21,13 @@ function ExistingUser() {
 
         if (storedUserData && storedUserData.email === email && storedUserData.password === password) {
             alert('Login successful!');
+            setEmail(' ');
+            setPassword('');
         } else {
             alert('Invalid email or password. Please try again.');
-        }
+            setEmail(' ');
+            setPassword('');
+        }   
     };
 
     return (
