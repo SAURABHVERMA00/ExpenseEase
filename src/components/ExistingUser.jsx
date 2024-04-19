@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'
 
 function ExistingUser() {
 
@@ -28,7 +29,6 @@ function ExistingUser() {
     return (
         <div className='box flex items-center justify-center'>
             <div className="form-container">
-                <h1 className='text-center mt-4 mb-6 text-black font-bold text-5xl'>Expense<span className='text-sky-500'>Ease</span></h1>
                 <form onSubmit={handleSignIn}>
                     <div className=' flex space-x-6 m-1 mb-2'>
                         <input
@@ -67,8 +67,8 @@ function ExistingUser() {
                         </button>
                     </div>
                     <div className='flex items-center justify-center space-x-1'>
-                        <p>New user?</p>
-                        <button type="button">SignUp</button>
+                        <span>New user?</span> 
+                        <Link to="/new-user" className='text-sky-500'>Sign Up</Link>
                     </div>
                 </form>
                 <div className="flex items-center justify-center m-1 mb-2">

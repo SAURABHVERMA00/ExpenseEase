@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'
 
 function NewUser() {
     const [formData, setFormData] = useState({
@@ -29,108 +30,108 @@ function NewUser() {
     return (
         <div className='box flex items-center justify-center'>
             <div className="form-container">
-                <h1 className='text-center mt-4 mb-6 text-black font-bold text-5xl'>Expense<span className='text-sky-500'>Ease</span></h1>
+                
                 <form onSubmit={handleSubmit}>
                     <div className=' flex space-x-2 m-1 mb-2'>
-                        <input 
-                            className='outline-none rounded-md border-2 border-sky-500 p-2 text-center' 
-                            type="text" 
-                            placeholder='First name' 
-                            id="firstName" 
-                            name="firstName" 
-                            value={formData.firstName} 
-                            onChange={handleChange} 
-                            required 
+                        <input
+                            className='outline-none rounded-md border-2 border-sky-500 p-2 text-center'
+                            type="text"
+                            placeholder='First name'
+                            id="firstName"
+                            name="firstName"
+                            value={formData.firstName}
+                            onChange={handleChange}
+                            required
                         />
-                        <input 
-                            className='outline-none rounded-md border-2 border-sky-500 p-2 text-center' 
-                            type="text" 
-                            placeholder='Last name' 
-                            id="lastName" 
-                            name="lastName" 
-                            value={formData.lastName} 
-                            onChange={handleChange} 
-                            required 
+                        <input
+                            className='outline-none rounded-md border-2 border-sky-500 p-2 text-center'
+                            type="text"
+                            placeholder='Last name'
+                            id="lastName"
+                            name="lastName"
+                            value={formData.lastName}
+                            onChange={handleChange}
+                            required
                         />
                     </div>
                     <div className=' flex space-x-2 m-1 mb-2'>
-                        <input 
-                            className='outline-none border-2 border-sky-500 rounded-md w-1/3 p-2' 
-                            type="date" 
-                            id="dob" 
-                            name="dob" 
-                            value={formData.dob} 
-                            onChange={handleChange} 
+                        <input
+                            className='outline-none border-2 border-sky-500 rounded-md w-1/3 p-2'
+                            type="date"
+                            id="dob"
+                            name="dob"
+                            value={formData.dob}
+                            onChange={handleChange}
                         />
-                        <input 
-                            className='outline-none w-[100%] rounded-md border-2 border-sky-500 text-center p-2' 
-                            type="text" 
-                            placeholder='Phone number' 
-                            id="phoneNumber" 
-                            name="phoneNumber" 
-                            value={formData.phoneNumber} 
-                            onChange={handleChange} 
-                        />
-                    </div>
-                    <div className=' flex space-x-6 m-1 mb-2'>
-                        <input 
-                            className='outline-none rounded-md border-2 border-sky-500 p-2 text-center w-[100%]' 
-                            type="email" 
-                            placeholder='<your_emial_id>@gmail.com' 
-                            id="email" 
-                            name="email" 
-                            value={formData.email} 
-                            onChange={handleChange} 
-                            required 
+                        <input
+                            className='outline-none w-[100%] rounded-md border-2 border-sky-500 text-center p-2'
+                            type="text"
+                            placeholder='Phone number'
+                            id="phoneNumber"
+                            name="phoneNumber"
+                            value={formData.phoneNumber}
+                            onChange={handleChange}
                         />
                     </div>
                     <div className=' flex space-x-6 m-1 mb-2'>
-                        <input 
-                            className='outline-none rounded-md border-2 border-sky-500 p-2 text-center w-[100%]' 
-                            type="password" 
-                            placeholder='Enter your password' 
-                            id="password" 
-                            name="password" 
-                            value={formData.password} 
-                            onChange={handleChange} 
-                            required 
+                        <input
+                            className='outline-none rounded-md border-2 border-sky-500 p-2 text-center w-[100%]'
+                            type="email"
+                            placeholder='<your_emial_id>@gmail.com'
+                            id="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                    <div className=' flex space-x-6 m-1 mb-2'>
+                        <input
+                            className='outline-none rounded-md border-2 border-sky-500 p-2 text-center w-[100%]'
+                            type="password"
+                            placeholder='Enter your password'
+                            id="password"
+                            name="password"
+                            value={formData.password}
+                            onChange={handleChange}
+                            required
                         />
                     </div>
                     <div className=' flex space-x-6 m-1'>
-                        <input 
-                            className='outline-none rounded-md border-2 border-sky-500 p-2 text-center w-[100%]' 
-                            type="password" 
-                            placeholder='Confirm your password' 
-                            id="confirmPassword" 
-                            name="confirmPassword" 
-                            value={formData.confirmPassword} 
-                            onChange={handleChange} 
-                            required 
+                        <input
+                            className='outline-none rounded-md border-2 border-sky-500 p-2 text-center w-[100%]'
+                            type="password"
+                            placeholder='Confirm your password'
+                            id="confirmPassword"
+                            name="confirmPassword"
+                            value={formData.confirmPassword}
+                            onChange={handleChange}
+                            required
                         />
                     </div>
                     <div className=' flex space-x-1 m-1 items-center justify-start'>
-                        <input 
-                            type="checkbox" 
-                            id="agreementChecked" 
-                            name="agreementChecked" 
-                            checked={formData.agreementChecked} 
-                            onChange={handleChange} 
+                        <input
+                            type="checkbox"
+                            id="agreementChecked"
+                            name="agreementChecked"
+                            checked={formData.agreementChecked}
+                            onChange={handleChange}
                         />
                         <label htmlFor="agreementChecked">I agree to the terms and conditions</label>
                     </div>
                     <div className=' flex  m-2 p-2 items-center justify-center'>
-                        <button 
-                            className='outline-none bg-sky-500 rounded-md p-2 ps-4 pe-4 text-white' 
+                        <button
+                            className='outline-none bg-sky-500 rounded-md p-2 ps-4 pe-4 text-white'
                             type="submit"
-                            disabled={!formData.agreementChecked} 
+                            disabled={!formData.agreementChecked}
                         >
                             Create Account
                         </button>
                     </div>
                 </form>
                 <div className='flex items-center justify-center space-x-1'>
-                    <p>Existing user?</p>
-                    <button type="button">Sign In</button>
+                    <span>New user?</span>
+                    <Link to="/existing-user" className='text-sky-500'>Sing In</Link>
                 </div>
                 <div className="flex items-center justify-center m-1 mb-2">
                     <div className="w-2/3 h-px bg-black"></div>
