@@ -1,8 +1,6 @@
 import { useState } from 'react'
-import NewUser from './components/NewUser'
-import ExistingUser from './components/ExistingUser'
+import MainPage from './Pages/MainPage'
 import './App.css'
-import MainPage from './pages/MainPage'
 
 
 function App() {
