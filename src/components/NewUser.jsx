@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
 
 function NewUser() {
+    
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -124,6 +125,7 @@ function NewUser() {
                             className='outline-none bg-sky-500 rounded-md p-2 ps-4 pe-4 text-white'
                             type="submit"
                             disabled={!formData.agreementChecked}
+                            
                         >
                             Create Account
                         </button>

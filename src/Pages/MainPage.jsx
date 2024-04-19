@@ -31,7 +31,7 @@ const MainPage = () => {
       </main>
       <div className="w-0 " style={{ borderRight: "12vw solid transparent", borderTop: "100vh solid #0ea5e9" }}></div>
       <main className="bg-white w-1/2 flex flex-col justify-center items-center">
-        <h1 className='text-center mt-4 mb-10 text-black font-bold text-7xl'>Expense<span className='text-sky-500'>Ease</span></h1>
+        <h1 className='text-center mb-14 text-black font-bold text-7xl'>Expense<span className='text-sky-500'>Ease</span></h1>
         <div className=" h-[28rem]">
           <RouterProvider router={router} />
         </div>

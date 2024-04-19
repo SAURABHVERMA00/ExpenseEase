@@ -34,7 +34,7 @@ function ExistingUser() {
         <div className='box flex items-center justify-center'>
             <div className="form-container">
                 <form onSubmit={handleSignIn}>
-                    <div className=' flex space-x-6 m-1 mb-2'>
+                    <div className=' flex space-x-6 m-1 mb-7 '>
                         <input
                             className='outline-none rounded-md border-2 border-sky-500 p-2 text-center w-[26em]'
                             type="email"
@@ -46,7 +46,7 @@ function ExistingUser() {
                             required
                         />
                     </div>
-                    <div className=' flex space-x-6 m-1'>
+                    <div className=' flex space-x-6 m-1 mb-4'>
                         <input
                             className='outline-none rounded-md border-2 border-sky-500 p-2 text-center w-[100%]'
                             type="password"
