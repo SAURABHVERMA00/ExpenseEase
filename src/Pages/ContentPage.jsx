@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "../assets/logo.png";
 
+
 const ContentPage = () => {
   return (
     <div className=" ">
@@ -16,7 +17,6 @@ const ContentPage = () => {
           </p>
         </div>
       </div>
-      <div className="signup"></div>
     </div>
   );
 };
