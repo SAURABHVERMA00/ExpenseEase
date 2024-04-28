@@ -170,7 +170,8 @@ function MainPageDashboard() {
           </div>
         </div>
         {/* ---- MAIN CONTENT ----- */}
-        <div className=''>
+        <div>
+
             <Dashboard/>
         </div>
       </section>
