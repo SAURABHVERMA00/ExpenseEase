@@ -3,13 +3,15 @@ import MainPage from './Pages/MainPage'
 import MainPageDashboard from './Pages/MainPageDashboard'
 import './App.css'
 
+import Dashboard from './components/Dashboard'
 
 function App() {
  
 
   return (
     <>
-      <MainPageDashboard/ >
+      {/* <Dashboard/> */}
+      <MainPageDashboard/>
     </>
   )
 }
