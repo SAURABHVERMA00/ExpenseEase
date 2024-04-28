@@ -1,5 +1,6 @@
 import React from 'react'
-import ExpenseEaselogo from '../assets/ExpenseEase.png'
+import ExpenseEaselogo from '../assets/ExpenseEase.png';
+import UserDashboard from '../components/UserDashboard.jsx';
 
 function MainPageDashboard() {
 
@@ -168,7 +169,7 @@ function MainPageDashboard() {
         </div>
         {/* ---- MAIN CONTENT ----- */}
         <div>
-
+            <UserDashboard/>
         </div>
       </section>
     </div>
