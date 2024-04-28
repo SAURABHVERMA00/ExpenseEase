@@ -171,6 +171,7 @@ function MainPageDashboard() {
         </div>
         {/* ---- MAIN CONTENT ----- */}
         <div>
+
             <Dashboard/>
         </div>
       </section>
