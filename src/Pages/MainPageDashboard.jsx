@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
+import { useState } from 'react';
 import ExpenseEaselogo from '../assets/ExpenseEase.png';
 import Dashboard from '../components/Dashboard';
-import TransactionPage from './TransactionPage';
 
 function MainPageDashboard() {
+
 
   let menu_Dashboard = 'Dashboard';
   let menu_Expense = 'Expense';
@@ -11,7 +12,9 @@ function MainPageDashboard() {
   let menu_Transactions = 'Transactions';
   let general_FAQ = 'FAQ';
   let general_Settings = 'Settings';
-  let UserName = 'Shoib'
+  let UserName = 'Shoib';
+  const [WhatsTheMenu, setTheMenu] = useState(menu_Dashboard);
+
 
   return (
     <div className='h-full w-full flex'>
@@ -20,7 +23,7 @@ function MainPageDashboard() {
       <section className='h-screen w-1/5 lg:w-1/6 md:w-1/5 bg-white relative flex flex-col justify-between'>
         {/* --------------- LOGO FOR THE SITE --------- */}
         <div className='flex space-x-1 justify-center items-center p-2  lg:pe-4 pt-5 lg:pt-3 md:pt-3'>
-          <img className='w-[30px]  md:w-[27px] lg:w-[35px]' src={ExpenseEaselogo}   />
+          <img className='w-[30px]  md:w-[27px] lg:w-[35px]' src={ExpenseEaselogo} />
           <h1 className='text-[20px] lg:text-[27px] hidden md:block lg:block'>Expenses<span className='text-sky-500 '>Ease</span> </h1>
         </div>
 
@@ -29,8 +32,8 @@ function MainPageDashboard() {
           <div className='flex flex-col space-x-3 mb-2 lg:ms-2 md:ms-2'>
             <p className='text-sky-500 text-center md:text-left lg:text-left ps-0 lg:ps-2 md:ps-2 text-[15px]'>Menu</p>
             <ul>
-              <li className='mb-2 mt-2  hover:bg-sky-500 hover:text-white rounded-l-lg'>
-                <button className='flex space-x-1 justify-center md:justify-start lg:justify-start items-center w-5/6 p-2'>
+              <li className='mb-2 mt-2  hover:bg-sky-200 hover:text-sky-950 rounded-l-lg'>
+                <button onClick={() => setTheMenu(menu_Dashboard)} className='flex space-x-1 justify-center md:justify-start lg:justify-start items-center w-5/6 p-2'>
                   <svg xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
@@ -42,8 +45,8 @@ function MainPageDashboard() {
                   <span className='text-[17px] hidden md:block lg:block'>{menu_Dashboard}</span>
                 </button>
               </li>
-              <li className='mb-2 mt-2  hover:bg-sky-500 hover:text-white rounded-l-lg'>
-                <button className='flex space-x-1 justify-center md:justify-start lg:justify-start items-center w-5/6 p-2'>
+              <li className='mb-2 mt-2  hover:bg-sky-200 hover:text-sky-950 rounded-l-lg'>
+                <button onClick={() => setTheMenu(menu_Expense)} className='flex space-x-1 justify-center md:justify-start lg:justify-start items-center w-5/6 p-2'>
                   <svg xmlns="http://www.w3.org/2000/svg"
                     fill="none" viewBox="0 0 24 24"
                     strokeWidth={1.5}
@@ -55,8 +58,8 @@ function MainPageDashboard() {
                   <span className='text-[17px] hidden md:block lg:block'>{menu_Expense}</span>
                 </button>
               </li>
-              <li className='mb-2 mt-2  hover:bg-sky-500 hover:text-white rounded-l-lg'>
-                <button className='flex space-x-1 justify-center md:justify-start lg:justify-start items-center w-5/6 p-2'>
+              <li className='mb-2 mt-2  hover:bg-sky-200 hover:text-sky-950 rounded-l-lg'>
+                <button onClick={() => setTheMenu(menu_Card)} className='flex space-x-1 justify-center md:justify-start lg:justify-start items-center w-5/6 p-2'>
                   <svg xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
@@ -69,8 +72,8 @@ function MainPageDashboard() {
                   <span className='text-[17px] hidden md:block lg:block'>{menu_Card}</span>
                 </button>
               </li>
-              <li className='mb-2 mt-2  hover:bg-sky-500 hover:text-white rounded-l-lg'>
-                <button className='flex space-x-1 justify-center md:justify-start lg:justify-start items-center w-5/6 p-2'>
+              <li className='mb-2 mt-2  hover:bg-sky-200 hover:text-sky-950 rounded-l-lg'>
+                <button onClick={() => setTheMenu(menu_Transactions)} className='flex space-x-1 justify-center md:justify-start lg:justify-start items-center w-5/6 p-2'>
                   <svg xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
@@ -89,8 +92,8 @@ function MainPageDashboard() {
           <div className='flex flex-col space-x-3 lg:ms-2 md:ms-2'>
             <span className='text-sky-500 text-center md:text-left lg:text-left ps-0 lg:ps-2 md:ps-2 text-[15px] '>General</span>
             <ul>
-              <li className='mb-1 mt-2  hover:bg-sky-500 hover:text-white rounded-l-lg'>
-                <button className='flex space-x-1 justify-center md:justify-start lg:justify-start items-center w-5/6 p-2'>
+              <li className='mb-1 mt-2  hover:bg-sky-200 hover:text-sky-950 rounded-l-lg'>
+                <button onClick={() => setTheMenu(general_FAQ)} className='flex space-x-1 justify-center md:justify-start lg:justify-start items-center w-5/6 p-2'>
                   <svg xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
@@ -103,8 +106,8 @@ function MainPageDashboard() {
                   <span className='text-[17px] hidden md:block lg:block'>{general_FAQ}</span>
                 </button>
               </li>
-              <li className='mb-2 mt-1  hover:bg-sky-500 hover:text-white rounded-l-lg'>
-                <button className='flex space-x-1 justify-center md:justify-start lg:justify-start items-center w-5/6 p-2'>
+              <li className='mb-2 mt-1  hover:bg-sky-200 hover:text-sky-950 rounded-l-lg'>
+                <button onClick={() => setTheMenu(general_Settings)} className='flex space-x-1 justify-center md:justify-start lg:justify-start items-center w-5/6 p-2'>
                   <svg xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
@@ -137,12 +140,12 @@ function MainPageDashboard() {
         </div>
       </section>
 
-      <section className='h-screen w-4/5 lg:w-5/6 md:w-4/5 bg-sky-500'>
+      <section className='h-screen w-4/5 lg:w-5/6 md:w-4/5 bg-sky-200'>
         {/* --------- NAVBAR ----------- */}
         <div className='flex justify-between items-center bg-white p-3'>
-          <p className='text-xl font-bold md:text-2xl lg:text-3xl'>{menu_Dashboard}</p>
+          <p className='text-xl font-bold md:text-2xl lg:text-3xl'>{WhatsTheMenu}</p>
           <div className='flex justify-evenly items-center space-x-2'>
-            <button className=' p-2 bg-[#ededed]  rounded-full'>
+            <button className=' p-2 bg-sky-200   rounded-full'>
               <svg xmlns="http://www.w3.org/2000/svg"
                 fill="white"
                 viewBox="0 0 24 24"
@@ -153,7 +156,7 @@ function MainPageDashboard() {
               </svg>
             </button>
 
-            <div className='flex justify-center items-center w-auto h-10 bg-[#ededed] rounded-3xl ps-0 pt-2 pb-2 pe-5 '>
+            <div className='flex justify-center items-center w-auto h-10 bg-sky-200  rounded-3xl ps-0 pt-2 pb-2 pe-5 '>
               <div className='h-10 w-10 rounded-full flex justify-center items-center font-medium text-2xl'>
                 <svg xmlns="http://www.w3.org/2000/svg"
                   fill="white"
@@ -173,8 +176,7 @@ function MainPageDashboard() {
         {/* ---- MAIN CONTENT ----- */}
         <div>
 
-            {/* <Dashboard/> */}
-            <TransactionPage/>
+            <Dashboard/>
         </div>
       </section>
     </div>
