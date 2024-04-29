@@ -5,13 +5,17 @@ import './App.css'
 import TransactionPage from './Pages/TransactionPage'
 
 import Dashboard from './components/Dashboard'
+import Card from './components/Card/Card'
 
 function App() {
  
 
   return (
     <>
-      <MainPage/>
+      {/* <MainPage/> */}
+      {/* <TransactionPage/> */}
+      <MainPageDashboard/>
+      {/* <Card/> */}
     </>
   )
 }

@@ -9,16 +9,7 @@ const UserBox = ({userId,userName,userAccount,Amount}) => {
   // const handleRadioChange = () => {
   //   setIsChecked(prevState => !prevState); // Toggle the checked state
   // };
-   const handleRadioChange = (e) => {
-    setIsChecked(prevState => !prevState);
-    const isChecked = e.target.checked;
-    const color= document.getElementById('main');
-    if (isChecked) {
-     color.classList.add('bg-green-500') // Add Tailwind CSS class for red background
-    } else {
-      color.classList.add('bg-green-500')  // Remove Tailwind CSS class for red background
-    }
-  };
+  
 
   return (
     <div id='main'  className="  p-4 m-3 border-1 border-gray-300 bg-red-500 text-black rounded flex flex-col ">
@@ -38,7 +29,7 @@ const UserBox = ({userId,userName,userAccount,Amount}) => {
         type="radio"
         id="pending"
         name="status"
-        value={isChecked ? 'pending' : 'completed'}
+        value='pending'
 
         className="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
       />

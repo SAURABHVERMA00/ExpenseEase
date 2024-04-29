@@ -9,12 +9,12 @@ const InputFields = ({users,setUsers,numInputs,setNumInputs}) => {
     const value = e.target.value;
 
     // Check if input is within the allowed range (1-6)
-    if (/^[1-6]{0,1}$/.test(value)) {
+    if (/^[2-6]{0,1}$/.test(value)) {
       setNumInputs(value);
 
       // Generate users array with empty values based on input
       const newUsers = [];
-      for (let i = 1; i <= parseInt(value); i++) {
+      for (let i = 1; i < parseInt(value); i++) {
         newUsers.push({ id: i, username: '', useraccountnumber: '' });
       }
       setUsers(newUsers);

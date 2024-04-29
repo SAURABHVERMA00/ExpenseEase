@@ -7,7 +7,7 @@ const TransactionPage = () => {
     <div >
      
       <div className="transaction w-full h-full" >
-        <NavBar />
+        {/* <NavBar /> */}
         <MainContent />
       </div>
     </div>

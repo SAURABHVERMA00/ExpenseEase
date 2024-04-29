@@ -1,6 +1,7 @@
 import React from 'react'
 import ExpenseEaselogo from '../assets/ExpenseEase.png';
 import Dashboard from '../components/Dashboard';
+import TransactionPage from './TransactionPage';
 
 function MainPageDashboard() {
 
@@ -13,7 +14,7 @@ function MainPageDashboard() {
   let UserName = 'Shoib'
 
   return (
-    <div className='h-screen w-screen flex'>
+    <div className='h-full w-full flex'>
       {/* ________ SIDEBAR ________ */}
 
       <section className='h-screen w-1/5 lg:w-1/6 md:w-1/5 bg-white relative flex flex-col justify-between'>
@@ -172,7 +173,8 @@ function MainPageDashboard() {
         {/* ---- MAIN CONTENT ----- */}
         <div>
 
-            <Dashboard/>
+            {/* <Dashboard/> */}
+            <TransactionPage/>
         </div>
       </section>
     </div>

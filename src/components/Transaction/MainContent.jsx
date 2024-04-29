@@ -14,9 +14,9 @@ const MainContent = () => {
   const Amount=amount/numInputs;
   console.log(users);
   return (
-    <div className="flex mx-16   ">
+    <div className="flex p-4 h-full w-full ">
       <div className="last30days w-2/3  px-6 py-3 ">
-        <div className=" flex justify-between  p-6 w-full mb-16 ">
+        <div className=" flex justify-between  p-6 w-full mb-14  bg-white  rounded-lg ">
           <div className="">
             <p className="font-semibold">Last </p>
             <p className="text-center font-semibold">30 Days</p>
@@ -37,25 +37,26 @@ const MainContent = () => {
             <p className="text-center font-semibold">Rs. 120000</p>
           </div>
         </div>
-
-        <div className=" flex justify-between  mb-5 px-6">
-          <div className="flex items-center gap-44">
-            <p className="font-semibold text-xl text-gray-500">Date</p>
-            <p  className="font-semibold text-xl text-gray-500">Vendor</p>
+<div className="bg-white pt-5 rounded-lg  ">
+        <div className=" flex justify-between  mb-5 px-6 ">
+          <div className="flex items-center gap-32">
+            <p className="font-semibold text-xl text-sky-500">DATE</p>
+            <p  className="font-semibold text-xl text-sky-500">VENDOR</p>
           </div>
+
           <div className="flex items-center gap-24">
-            <p  className="font-semibold text-xl text-gray-500">Attachment</p>
-            <p  className="font-semibold text-xl text-gray-500">AMOUNT</p>
+            <p  className="font-semibold text-xl text-sky-500">ATTACHMENT</p>
+            <p  className="font-semibold text-xl text-sky-500">AMOUNT</p>
           </div>
         </div>
 
-        <div className="w-full h-1 bg-gray-500 "></div>
+        <div className="w-full h-1 bg-[#dfdfdf] "></div>
 
 
         <p className="mt-6  ml-3 text-2xl font-bold">History</p>
 
 
-        <div className="tab mt-4 overflow-auto h-[304px] ">
+        <div className="tab mt-4 overflow-auto h-[304px] p-2 ">
           <TableForm/>
           <TableForm/>
           <TableForm/>
@@ -66,6 +67,9 @@ const MainContent = () => {
           <TableForm/>
           <TableForm/>
         </div>
+
+        </div>
+
       </div>
       <div className="pendingRupees rounded-sm  bg-slate-200   w-1/3">
         <h1 className="text-3xl font-bold bg-blue-300 p-4 text-center ">Pending Money</h1>
