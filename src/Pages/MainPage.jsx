@@ -1,27 +1,9 @@
 import React from "react";
 import ContentPage from '../Pages/ContentPage'
 import NewUser from '../components/NewUser'
-import ExistingUser from '../components/ExistingUser'
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import ExistingUser from '../components/ExistingUser';
+import { Outlet } from 'react-router-dom';
 
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <ExistingUser />,
-  },
-  {
-    path: "/new-user",
-    element: <NewUser />,
-  },
-  {
-    path: "/existing-user",
-    element: <ExistingUser />,
-  },
-]);
 const MainPage = () => {
   return (
 
@@ -33,7 +15,7 @@ const MainPage = () => {
       <main className="bg-white w-1/2 flex flex-col justify-center items-center">
         <h1 className='text-center mb-14 text-black font-bold text-7xl'>Expense<span className='text-sky-500'>Ease</span></h1>
         <div className=" h-[28rem]">
-          <RouterProvider router={router} />
+          <Outlet />
         </div>
       </main>
     </div>

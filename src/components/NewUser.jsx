@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function NewUser() {
+    const navigate = useNavigate();
     
     const [formData, setFormData] = useState({
         firstName: '',
@@ -26,6 +28,7 @@ function NewUser() {
         e.preventDefault();
         localStorage.setItem('userData', JSON.stringify(formData));
         console.log('User data saved:', formData);
+        navigate("/user")
     };
 
     return (
@@ -122,6 +125,7 @@ function NewUser() {
                     </div>
                     <div className=' flex  m-2 p-2 items-center justify-center'>
                         <button
+                            
                             className='outline-none bg-sky-500 rounded-md p-2 ps-4 pe-4 text-white'
                             type="submit"
                             disabled={!formData.agreementChecked}
@@ -133,7 +137,7 @@ function NewUser() {
                 </form>
                 <div className='flex items-center justify-center space-x-1'>
                     <span>New user?</span>
-                    <Link to="/existing-user" className='text-sky-500'>Sing In</Link>
+                    <Link to="/" className='text-sky-500'>Sign In</Link>
                 </div>
                 <div className="flex items-center justify-center m-1 mb-2">
                     <div className="w-2/3 h-px bg-black"></div>

@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 const Card = () => {
-  // localStorage.clear();
+
   
   const [cardDetails, setCardDetails] = useState({
     cardHolderName: "",
@@ -37,7 +37,7 @@ const Card = () => {
   const handleSubmit = () => {
     storeCardDetails();
     console.log("Form submitted:", GetcardDetails);
-    setGetCardDetails({ // Reset input fields to empty after submission
+    setCardDetails({ // Reset input fields to empty after submission
       cardHolderName: "",
       cardNumber: "",
       expiryDate: "",
@@ -51,12 +51,13 @@ const Card = () => {
   return (
     <>
       <div className="card flex overflow-hidden">
-        <div className="leftCardside w-1/2   flex flex-col my-16 items-center gap-24">
+        <div className="leftCardside w-1/2   flex flex-col mt-16 items-center gap-24">
           <h1 className="text-center text-5xl font-semibold">Your Master Card</h1>
           <div className="w-2/3 relative ">
             <img
               className="rounded-2xl"
-              src="./credit_card_bg.jpeg"
+              
+              src="/credit_card_bg.jpeg"
               alt="banckground"
             />
 
@@ -90,8 +91,8 @@ const Card = () => {
           </div>
         </div>
 
-        <div className="rightCardside w-1/2 flex flex-col items-center my-16  ">
-          <div className="">
+        <div className="rightCardside w-1/2 flex flex-col items-center mt-16  ">
+          <div className=" bg-white p-2 ps-4 pe-4 rounded-lg">
             <h1 className=" text-5xl font-semibold">
               {" "}
               Payment Details :
@@ -104,7 +105,7 @@ const Card = () => {
                 <input
                   type="text"
                   id="first_name"
-                  className="bg-white border border-gray-300 text-black text-lg rounded-lg   block w-full p-2.5 dark:bg-gray-300 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-white border border-gray-300 text-black text-lg rounded-lg   block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Card Holder Name"
                   required
                   name="cardHolderName"
@@ -119,7 +120,7 @@ const Card = () => {
                 <input
                   type="text"
                   id="first_name"
-                  className="bg-gray-50 border border-gray-300 text-black text-lg rounded-lg   block w-full p-2.5 dark:bg-gray-300 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-white border border-gray-300 text-black text-lg rounded-lg   block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Card Number  (5555 5555 5555 5555) "
                   required
                   name="cardNumber"
@@ -127,7 +128,7 @@ const Card = () => {
                   onChange={handleInputChange}
                 />
               </div>
-              <div className="flex  justify-center items-center">
+              <div className="flex  justify-between items-center ">
                 <div className="flex flex-col mx-3">
                   <label
                     className="text-2xl font-semibold my-3"
@@ -138,7 +139,7 @@ const Card = () => {
                   <input
                     type="text"
                     id="first_name"
-                    className="bg-gray-50 border border-gray-300 text-black text-lg rounded-lg   block w-full p-2.5 dark:bg-gray-300 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className="bg-white border border-gray-300 text-black text-lg rounded-lg   block w-full p-2.5   dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder=" Expiry Date (MM/YYYY)"
                     required
                     name="expiryDate"
@@ -156,7 +157,7 @@ const Card = () => {
                   <input
                     type="text"
                     id="first_name"
-                    className="bg-gray-50 border border-gray-300 text-black text-lg rounded-lg   block w-full p-2.5 dark:bg-gray-300 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className="bg-white border border-gray-300 text-black text-lg rounded-lg   block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="CVV (919)"
                     required
                     name="cvv"
@@ -184,3 +185,4 @@ const Card = () => {
 };
 
 export default Card;
+
