@@ -1,38 +1,51 @@
 import React from "react";
-import { useState ,useEffect} from "react";
+import { useState, useEffect } from "react";
 const Card = () => {
-   
+  // localStorage.clear();
+  
   const [cardDetails, setCardDetails] = useState({
     cardHolderName: "",
     cardNumber: "",
     expiryDate: "",
     cvv: "",
   });
-
-
+  
+  const [GetcardDetails, setGetCardDetails] = useState({
+    cardHolderName: "",
+    cardNumber: "",
+    expiryDate: "",
+    cvv: "",
+  });
+  
   const storeCardDetails = () => {
-    localStorage.setItem("cardDetails", JSON.stringify(cardDetails));
+    localStorage.setItem("GetcardDetails", JSON.stringify(GetcardDetails));
   };
-
-  // Fetch card details from local storage on component mount
+  
   useEffect(() => {
-    const storedCardDetails = localStorage.getItem("cardDetails");
+    const storedCardDetails = localStorage.getItem("GetcardDetails");
     if (storedCardDetails) setCardDetails(JSON.parse(storedCardDetails));
   }, []);
-  // console.log(cardDetails);
-
+  
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setCardDetails((prevDetails) => ({
+    setGetCardDetails((prevDetails) => ({
       ...prevDetails,
       [name]: value,
     }));
-    storeCardDetails(); // Update local storage on change
   };
- 
+  
+  const handleSubmit = () => {
+    storeCardDetails();
+    console.log("Form submitted:", GetcardDetails);
+    setGetCardDetails({ // Reset input fields to empty after submission
+      cardHolderName: "",
+      cardNumber: "",
+      expiryDate: "",
+      cvv: "",
+    });
+  };
+  
 
-
- 
 
 
   return (
@@ -85,32 +98,32 @@ const Card = () => {
             </h1>
             <form className=" my-10 ">
               <div className="flex flex-col justify-center gap-3 my-10 ">
-                <label className="text-2xl font-semibold" for="cardHolderName">
+                <label className="text-2xl font-semibold" htmlFor="cardHolderName">
                   Card Holder Name :
                 </label>
                 <input
                   type="text"
                   id="first_name"
-                  class="bg-gray-50 border border-gray-300 text-black text-lg rounded-lg   block w-full p-2.5 dark:bg-gray-300 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-white border border-gray-300 text-black text-lg rounded-lg   block w-full p-2.5 dark:bg-gray-300 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Card Holder Name"
                   required
                   name="cardHolderName"
-                  value={cardDetails.cardHolderName}
+                  value={GetcardDetails.cardHolderName}
                   onChange={handleInputChange}
-                  />
+                />
               </div>
               <div className="flex flex-col justify-center gap-3 my-8">
-                <label className="text-2xl font-semibold" for="cardNumber">
+                <label className="text-2xl font-semibold" htmlFor="cardNumber">
                   Card Number :
                 </label>
                 <input
                   type="text"
                   id="first_name"
-                  class="bg-gray-50 border border-gray-300 text-black text-lg rounded-lg   block w-full p-2.5 dark:bg-gray-300 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className="bg-gray-50 border border-gray-300 text-black text-lg rounded-lg   block w-full p-2.5 dark:bg-gray-300 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Card Number  (5555 5555 5555 5555) "
                   required
                   name="cardNumber"
-                  value={cardDetails.cardNumber}
+                  value={GetcardDetails.cardNumber}
                   onChange={handleInputChange}
                 />
               </div>
@@ -118,36 +131,36 @@ const Card = () => {
                 <div className="flex flex-col mx-3">
                   <label
                     className="text-2xl font-semibold my-3"
-                    for="cardNumber"
+                    htmlFor="cardNumber"
                   >
                     Expiry Date :
                   </label>
                   <input
                     type="text"
                     id="first_name"
-                    class="bg-gray-50 border border-gray-300 text-black text-lg rounded-lg   block w-full p-2.5 dark:bg-gray-300 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className="bg-gray-50 border border-gray-300 text-black text-lg rounded-lg   block w-full p-2.5 dark:bg-gray-300 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder=" Expiry Date (MM/YYYY)"
                     required
                     name="expiryDate"
-                    value={cardDetails.expiryDate}
+                    value={GetcardDetails.expiryDate}
                     onChange={handleInputChange}
                   />
                 </div>
                 <div className="flex flex-col mx-3 ">
                   <label
                     className="text-2xl font-semibold  my-3"
-                    for="cardNumber"
+                    htmlFor="cardNumber"
                   >
                     CVV :
                   </label>
                   <input
                     type="text"
                     id="first_name"
-                    class="bg-gray-50 border border-gray-300 text-black text-lg rounded-lg   block w-full p-2.5 dark:bg-gray-300 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className="bg-gray-50 border border-gray-300 text-black text-lg rounded-lg   block w-full p-2.5 dark:bg-gray-300 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="CVV (919)"
                     required
                     name="cvv"
-                    value={cardDetails.cvv}
+                    value={GetcardDetails.cvv}
                     onChange={handleInputChange}
                   />
                 </div>
@@ -156,9 +169,9 @@ const Card = () => {
               <div className="mt-10">
                 <button
                   type="button"
-                  class="text-white w-full  bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-semibold rounded-lg text-xl px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                  
-                 >
+                  className="text-white w-full  bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-semibold rounded-lg text-xl px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                  onClick={handleSubmit}
+                >
                   Submit
                 </button>
               </div>
