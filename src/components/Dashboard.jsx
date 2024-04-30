@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-
-// Reusable Budget Card component
 const BudgetCard = ({ icon, title, amount }) => (
     <div className='bg-white rounded-xl p-2 mb-3 md:w-1/4 md:mb-0 lg:w-1/4 lg:mb-0'>
         <div className='flex justify-start items-center space-x-2 mb-2'>
-            {icon}
+            <span>{icon}</span>
             <p>{title}</p>
         </div>
         <div className='mb-2 flex justify-center items-center text-3xl'>
@@ -13,15 +11,12 @@ const BudgetCard = ({ icon, title, amount }) => (
     </div>
 );
 
-// Reusable Card component
-const Card = ({ selectedCurrency, handleCurrencyChange }) => (
-
+const AtmCard = ({ selectedCurrency, handleCurrencyChange , UserBalance }) => (
     <div className='mb-2'>
         <p className='mb-2'>Your Card</p>
         <div className='h-40 lg:h-52 w-full text-white bg-black rounded-2xl mb-2'>
             ATM CARD HERE
         </div>
-
         <div className='mb-2 border-2 border-[#efefef] rounded-xl p-2 ps-3'>
             <p className='mb-1'>Your Balance</p>
             <div className='mb-2 flex justify-start items-center text-3xl font-bold'>
@@ -34,9 +29,8 @@ const Card = ({ selectedCurrency, handleCurrencyChange }) => (
                         className="w-8 h-8 bg-sky-200 rounded-full text-white">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M15 8.25H9m6 3H9m3 6-3-3h1.5a3 3 0 1 0 0-6M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                     </svg>
-
                 </span>
-                <span>12000</span>
+                <span>{UserBalance}</span>
             </div>
             <p className='h-[1.5px] w-full bg-[#efefef] mb-2'></p>
             <div className='flex justify-between items-center pe-4'>
@@ -80,7 +74,6 @@ function Dashboard() {
         setSelectedCurrency(event.target.value);
     };
 
-    // Define icons
     const budgetIcons = {
         total: (
             <svg
@@ -151,28 +144,50 @@ function Dashboard() {
             </svg>
         ),
     };
+    const [totalBudget, setTotalBudget] = React.useState(0);
+    const [totalExpenses, setTotalExpenses] = React.useState(0);
+    const [totalInvestment, setTotalInvestment] = React.useState(0);
+    const [UserRemainingBalance, setUserRemainingBalance] = React.useState(0);
+
+    
+
+    React.useEffect(() => {
+        const storedTotalBudget = localStorage.getItem("total_budget");
+        if (storedTotalBudget) setTotalBudget(parseFloat(storedTotalBudget));
+      
+        const storedTotalExpenses = localStorage.getItem("total_expenses");
+        if (storedTotalExpenses) setTotalExpenses(parseFloat(storedTotalExpenses));
+      
+        const storedTotalInvestment = localStorage.getItem("total_investment");
+        if (storedTotalInvestment) setTotalInvestment(parseFloat(storedTotalInvestment));
+
+        const remainingBalance = parseFloat(storedTotalBudget) - parseFloat(storedTotalExpenses);
+        if(remainingBalance) setUserRemainingBalance(remainingBalance);
+      }, []);
+
+    console.log(totalBudget);
 
     return (
         <div className='p-4 h-full w-full lg:flex lg:space-x-4'>
-            <div className='lg:w-4/6'>
+            <div className='lg:w-4/6 mb-4 lg:mb-0'>
                 <div className='lg:flex lg:justify-between lg:items-center lg:space-x-4 md:flex md:justify-between md:items-center md:space-x-4'>
                     {/* TOTAL BUDGET */}
                     <BudgetCard
-                        icon={budgetIcons.total}
+                        icon = {budgetIcons.total}
                         title="Total Budget"
-                        amount={<span>12000</span>}
+                        amount={totalBudget}
                     />
                     {/* TOTAL EXPENSES */}
                     <BudgetCard
                         icon={budgetIcons.expenses}
                         title="Total Expenses"
-                        amount={<span>12000</span>}
+                        amount={totalExpenses}
                     />
                     {/* INVESTMENTS */}
                     <BudgetCard
                         icon={budgetIcons.investments}
                         title="Investments"
-                        amount={<span>12000</span>}
+                        amount={totalInvestment}
                     />
                     {/* TOTAL SAVINGS */}
                     <BudgetCard
@@ -184,9 +199,10 @@ function Dashboard() {
             </div>
             {/* YOUR CARD SECTION */}
             <div className='bg-white ps-4 p-3 pe-4 lg:w-2/6 rounded-xl'>
-                <Card
+                <AtmCard
                     selectedCurrency={selectedCurrency}
                     handleCurrencyChange={handleCurrencyChange}
+                    UserBalance={UserRemainingBalance}
                 />
 
             </div>

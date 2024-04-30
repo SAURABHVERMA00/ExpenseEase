@@ -1,9 +1,13 @@
 import React from 'react';
 import { useState } from 'react';
 import ExpenseEaselogo from '../assets/ExpenseEase.png';
-import Dashboard from '../components/Dashboard';
+import { Outlet } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
+
 
 function MainPageDashboard() {
+  const navigate = useNavigate();
 
 
   let menu_Dashboard = 'Dashboard';
@@ -12,9 +16,9 @@ function MainPageDashboard() {
   let menu_Transactions = 'Transactions';
   let general_FAQ = 'FAQ';
   let general_Settings = 'Settings';
-  let UserName = 'Shoib';
   const [WhatsTheMenu, setTheMenu] = useState(menu_Dashboard);
 
+  let UserName = 'Shoib';
 
   return (
     <div className='h-full w-full flex'>
@@ -33,7 +37,10 @@ function MainPageDashboard() {
             <p className='text-sky-500 text-center md:text-left lg:text-left ps-0 lg:ps-2 md:ps-2 text-[15px]'>Menu</p>
             <ul>
               <li className='mb-2 mt-2  hover:bg-sky-200 hover:text-sky-950 rounded-l-lg'>
-                <button onClick={() => setTheMenu(menu_Dashboard)} className='flex space-x-1 justify-center md:justify-start lg:justify-start items-center w-5/6 p-2'>
+                <button onClick={() => {
+                  setTheMenu(menu_Dashboard)
+                  navigate("/")
+                }} className='flex space-x-1 justify-center md:justify-start lg:justify-start items-center w-5/6 p-2'>
                   <svg xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
@@ -46,7 +53,10 @@ function MainPageDashboard() {
                 </button>
               </li>
               <li className='mb-2 mt-2  hover:bg-sky-200 hover:text-sky-950 rounded-l-lg'>
-                <button onClick={() => setTheMenu(menu_Expense)} className='flex space-x-1 justify-center md:justify-start lg:justify-start items-center w-5/6 p-2'>
+                <button onClick={() => {
+                  setTheMenu(menu_Expense)
+                  navigate("/expenses")
+                }} className='flex space-x-1 justify-center md:justify-start lg:justify-start items-center w-5/6 p-2'>
                   <svg xmlns="http://www.w3.org/2000/svg"
                     fill="none" viewBox="0 0 24 24"
                     strokeWidth={1.5}
@@ -59,7 +69,10 @@ function MainPageDashboard() {
                 </button>
               </li>
               <li className='mb-2 mt-2  hover:bg-sky-200 hover:text-sky-950 rounded-l-lg'>
-                <button onClick={() => setTheMenu(menu_Card)} className='flex space-x-1 justify-center md:justify-start lg:justify-start items-center w-5/6 p-2'>
+                <button onClick={() => {
+                  setTheMenu(menu_Card)
+                  navigate("/card")
+                }} className='flex space-x-1 justify-center md:justify-start lg:justify-start items-center w-5/6 p-2'>
                   <svg xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
@@ -73,7 +86,10 @@ function MainPageDashboard() {
                 </button>
               </li>
               <li className='mb-2 mt-2  hover:bg-sky-200 hover:text-sky-950 rounded-l-lg'>
-                <button onClick={() => setTheMenu(menu_Transactions)} className='flex space-x-1 justify-center md:justify-start lg:justify-start items-center w-5/6 p-2'>
+                <button onClick={() => {
+                  setTheMenu(menu_Transactions)
+                  navigate("/transaction")
+                }} className='flex space-x-1 justify-center md:justify-start lg:justify-start items-center w-5/6 p-2'>
                   <svg xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
@@ -175,8 +191,7 @@ function MainPageDashboard() {
         </div>
         {/* ---- MAIN CONTENT ----- */}
         <div>
-
-            <Dashboard/>
+          <Outlet />
         </div>
       </section>
     </div>

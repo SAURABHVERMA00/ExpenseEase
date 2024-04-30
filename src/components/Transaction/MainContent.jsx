@@ -11,7 +11,7 @@ const MainContent = () => {
   const [users, setUsers] = useState([]);
   const [numInputs, setNumInputs] = useState('');
   const [showTable, setShowTable] = useState(false);
-  const Amount=amount/numInputs;
+  const Amount = amount / numInputs;
   console.log(users);
   return (
     <div className="flex p-4 h-full w-full ">
@@ -37,57 +37,57 @@ const MainContent = () => {
             <p className="text-center font-semibold">Rs. 120000</p>
           </div>
         </div>
-<div className="bg-white pt-5 rounded-lg  ">
-        <div className=" flex justify-between  mb-5 px-6 ">
-          <div className="flex items-center gap-32">
-            <p className="font-semibold text-xl text-sky-500">DATE</p>
-            <p  className="font-semibold text-xl text-sky-500">VENDOR</p>
+        <div className="bg-white pt-5 rounded-lg pb-3">
+          <div className=" flex justify-between  mb-5 px-6 ">
+            <div className="flex items-center gap-32">
+              <p className="font-semibold text-xl text-sky-500">DATE</p>
+              <p className="font-semibold text-xl text-sky-500">VENDOR</p>
+            </div>
+
+            <div className="flex items-center gap-24">
+              <p className="font-semibold text-xl text-sky-500">ATTACHMENT</p>
+              <p className="font-semibold text-xl text-sky-500">AMOUNT</p>
+            </div>
           </div>
 
-          <div className="flex items-center gap-24">
-            <p  className="font-semibold text-xl text-sky-500">ATTACHMENT</p>
-            <p  className="font-semibold text-xl text-sky-500">AMOUNT</p>
+          <div className="w-full h-1 bg-[#dfdfdf] "></div>
+
+
+          <p className="mt-6  ml-3 text-2xl font-bold">History</p>
+
+
+          <div className="tab mt-4 overflow-auto h-[304px] p-2 ">
+            <TableForm />
+            <TableForm />
+            <TableForm />
+            <TableForm />
+            <TableForm />
+            <TableForm />
+            <TableForm />
+            <TableForm />
+            <TableForm />
           </div>
-        </div>
-
-        <div className="w-full h-1 bg-[#dfdfdf] "></div>
-
-
-        <p className="mt-6  ml-3 text-2xl font-bold">History</p>
-
-
-        <div className="tab mt-4 overflow-auto h-[304px] p-2 ">
-          <TableForm/>
-          <TableForm/>
-          <TableForm/>
-          <TableForm/>
-          <TableForm/>
-          <TableForm/>
-          <TableForm/>
-          <TableForm/>
-          <TableForm/>
-        </div>
 
         </div>
 
       </div>
       <div className="pendingRupees rounded-sm  bg-slate-200   w-1/3">
         <h1 className="text-3xl font-bold bg-blue-300 p-4 text-center ">Pending Money</h1>
-        <Contribution  isChildVisible={isChildVisible} setIsChildVisible={setIsChildVisible}  amount={amount} setAmount={setAmount} users={users} setUsers={setUsers} numInputs={numInputs} setNumInputs={setNumInputs} showTable={showTable} setShowTable={setShowTable}/>
+        <Contribution isChildVisible={isChildVisible} setIsChildVisible={setIsChildVisible} amount={amount} setAmount={setAmount} users={users} setUsers={setUsers} numInputs={numInputs} setNumInputs={setNumInputs} showTable={showTable} setShowTable={setShowTable} />
 
-      
-        {showTable &&  users.map(user=>{
+
+        {showTable && users.map(user => {
           return (
-            <UserBox userId={user.id} userName={user.username} userAccount={user.useraccountnumber} Amount={Amount}/>
+            <UserBox userId={user.id} userName={user.username} userAccount={user.useraccountnumber} Amount={Amount} />
           )
-          
+
         })}
 
 
 
-        
 
-       
+
+
 
 
       </div>
