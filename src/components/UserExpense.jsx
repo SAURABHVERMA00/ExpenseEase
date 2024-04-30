@@ -35,6 +35,8 @@ function UserExpense() {
   const [totalBudgetOfUser, setTotalBudgetOfUser] = useState(0);
   const [totalExpenseOfUser, setTotalExpenseOfUser] = useState(0);
   const [totalInvestmentOfUser, setTotalInvestmentOfUser] = useState(0);
+
+
   useEffect(() => {
     const totalBudget =
       parseFloat(salary) + parseFloat(pension) + parseFloat(otherIncome);
@@ -91,7 +93,6 @@ function UserExpense() {
     }, 2000);
   };
 
-  console.log(totalBudgetOfUser);
 
   return (
     <div className="h-full w-full p-4">
