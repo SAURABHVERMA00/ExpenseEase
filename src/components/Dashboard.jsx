@@ -1,4 +1,5 @@
-import React, { useState , useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+// import { useNavigate } from 'react-router-dom';
 
 
 
@@ -8,7 +9,7 @@ function Dashboard() {
 
     const [cardDetails, setCardDetails] = useState({
         cardHolderName: "",
-        cardNumber: "",
+        cardNumber  : "",
         expiryDate: "",
         cvv: "",
     });
@@ -16,7 +17,7 @@ function Dashboard() {
     useEffect(() => {
         const storedCardDetails = localStorage.getItem("GetcardDetails");
         if (storedCardDetails) setCardDetails(JSON.parse(storedCardDetails));
-      }, []);
+    }, []);
 
     const [selectedCurrency, setSelectedCurrency] = useState('INR');
 
@@ -121,46 +122,46 @@ function Dashboard() {
     const AtmCard = ({ selectedCurrency, handleCurrencyChange, UserBalance }) => (
         <div className='mb-2'>
             <p className='mb-2'>Your Card</p>
-            <div className='h-40 lg:h-52 w-full text-white rounded-2xl mb-2 flex justify-center items-center'>
-                <div className="w-4/5 relative ">
+            <div className='h-40 md:h-64 lg:h-52 w-full text-white rounded-2xl mb-2 flex justify-center items-center'>
+                <div className=" 1/6 md:w-3/6 lg:w-4/5 relative ">
                     <img
                         className="rounded-2xl"
-                        src="./credit_card_bg.jpeg"
+                        src="/credit_card_bg.jpeg"
                         alt="banckground"
                     />
 
                     <div className="absolute top-3 left-4">
-                        <img src="./chip.png" alt="" width={40} />
+                        <img src="/chip.png" alt="" width={40} />
                     </div>
                     <div className="absolute top-3 right-5  ">
-                        <img className='' src="././mastercard.png" alt="mastercrd  " width={80} />
+                        <img className='' src="/mastercard.png" alt="mastercrd  " width={80} />
                     </div>
                     <div className="absolute top-14 left-10 py-10">
-                        <p className="text-white text-xl font-semibold">
+                        <p className="text-white text-sm lg:text-xl font-semibold">
                             <span className='font-normal'>#</span> {cardDetails.cardNumber}
                         </p>
                     </div>
                     <div className="absolute bottom-[-10px] left-3 py-7 ">
-                        <p className="text-white text-sm ">
+                        <p className="text-white text-xs lg:text-sm ">
                             Card Holder Name
                         </p>
-                        <p className="text-white text-md font-semibold">
+                        <p className="text-white text-sm lg:text-md font-semibold">
                             {cardDetails.cardHolderName}
                         </p>
                     </div>
                     <div className="absolute bottom-[-10px] right-20 py-7 ">
-                        <p className="text-white text-sm ">Expires</p>
-                        <p className="text-white text-md font-semibold">{cardDetails.expiryDate}</p>
+                        <p className="text-white text-xs lg:text-sm ">Expires</p>
+                        <p className="text-white text-sm lg:text-md font-semibold">{cardDetails.expiryDate}</p>
                     </div>
                     <div className="absolute bottom-[-10px] right-5  py-7 ">
-                        <p className="text-white text-sm ">CVV </p>
-                        <p className="text-white text-md font-semibold">{cardDetails.cvv}</p>
+                        <p className="text-white text-xs lg:text-sm ">CVV </p>
+                        <p className="text-white text-sm lg:text-md font-semibold">{cardDetails.cvv}</p>
                     </div>
                 </div>
             </div>
             <div className='mb-2 border-2 border-[#efefef] rounded-xl p-2 ps-3'>
                 <p className='mb-1'>Your Balance</p>
-                <div className='mb-2 flex justify-start items-center text-3xl font-bold'>
+                <div className='mb-2 flex justify-start items-center text-3xl font-bold space-x-2'>
                     <span>
                         <svg xmlns="http://www.w3.org/2000/svg"
                             fill="black"
@@ -194,7 +195,9 @@ function Dashboard() {
                     <div className='h-3 w-3 rounded-full bg-green-500'></div>
                 </div>
             </div>
-            <button className='p-1 bg-sky-200 rounded-full w-full flex justify-center items-center space-x-2 h-10'>
+            <button className='p-1 bg-sky-200 rounded-full w-full flex justify-center items-center space-x-2 h-10'
+
+            >
                 <svg xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"

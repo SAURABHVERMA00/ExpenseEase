@@ -4,9 +4,10 @@ import MainPageDashboard from './Pages/MainPageDashboard'
 import './App.css'
 import TransactionPage from './Pages/TransactionPage'
 import UserExpense from './components/UserExpense';
-// import UserExpense from '../'
 import Dashboard from './components/Dashboard'
-import Card from './components/Card/Card'
+import Card from './components/Card/Card';
+import ExistingUser from './components/ExistingUser'
+import NewUser from './components/NewUser'
 
 import {
   BrowserRouter,
@@ -16,6 +17,19 @@ import {
 const Rrouter = createBrowserRouter([
   {
     path:"/",
+    element :<MainPage/>,
+    children :[
+      {
+        index:true,
+        element :<ExistingUser/>
+      },{
+        path :"/new-user",
+        element : <NewUser/>
+      }
+    ]
+  },
+  {
+    path:"/user/",
     element:<MainPageDashboard/>,
     children : [
       {
@@ -23,13 +37,13 @@ const Rrouter = createBrowserRouter([
         element : <Dashboard />
       },
       {
-        path : "/expenses",
+        path : "/user/expenses",
         element : <UserExpense/>
       },{
-        path : "/transaction",
+        path : "/user/transaction",
         element : <TransactionPage/>
       },{
-        path :"/card",
+        path :"/user/card",
         element : <Card/>
       }
     ]
@@ -42,6 +56,7 @@ function App() {
   return (
     <>
       <RouterProvider router = {Rrouter}/>
+     
     </>
   )
 }

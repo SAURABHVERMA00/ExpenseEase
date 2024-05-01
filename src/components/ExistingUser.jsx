@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function ExistingUser() {
+
+    const navigate = useNavigate();
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -23,11 +26,13 @@ function ExistingUser() {
             alert('Login successful!');
             setEmail(' ');
             setPassword('');
+            navigate("/user")
         } else {
             alert('Invalid email or password. Please try again.');
             setEmail(' ');
             setPassword('');
         }   
+
 
     };
 
