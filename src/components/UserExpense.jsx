@@ -1,41 +1,86 @@
 import React, { useState, useEffect } from "react";
 
 function UserExpense() {
-  const [salary, setSalary] = useState(0);
-  const [pension, setPension] = useState(0);
-  const [investments, setInvestments] = useState(0);
-  const [otherIncome, setOtherIncome] = useState(0);
 
-  const [HomeMortage, setHomeMortage] = useState(0);
-  const [HomeInsurance, setHomeInsurance] = useState(0);
-  const [HomeMaintainance, setHomeMaintainance] = useState(0);
-  const [HomeUtilities, setHomeUtilities] = useState(0);
+  const currDate = new Date().getDate();
 
-  const [LivingFood, setLivingFood] = useState(0);
-  const [LivingClothing, setLivingClothing] = useState(0);
-  const [LivingHouseholdSupplies, setLivingHouseholdSupplies] = useState(0);
-  const [LviningOtherExpense, setLviningOtherExpense] = useState(0);
+  const [salary, setSalary] = useState(localStorage.getItem("user_salary") || 0);
+  const [pension, setPension] = useState(localStorage.getItem("user_pension") || 0);
+  const [investments, setInvestments] = useState(localStorage.getItem("user_investment") || 0);
+  const [otherIncome, setOtherIncome] = useState(localStorage.getItem("user_otherincome") || 0);
 
-  const [DebtOtherLoan, setDebtOtherLoan] = useState(0);
-  const [DebtVehicleLoan, setDebtVehicleLoan] = useState(0);
-  const [DebtEducationLoan, setDebtEducationLoan] = useState(0);
-  const [DebtCreditCard, setDebtCreditCard] = useState(0);
+  const [HomeMortage, setHomeMortage] = useState(localStorage.getItem("user_home_mortgage") || 0);
+  const [HomeInsurance, setHomeInsurance] = useState(localStorage.getItem("user_home_insurance") || 0);
+  const [HomeMaintainance, setHomeMaintainance] = useState(localStorage.getItem("user_home_maintenance") || 0);
+  const [HomeUtilities, setHomeUtilities] = useState(localStorage.getItem("user_home_utilities") || 0);
 
-  const [MiscTravelVacation, setMiscTravelVacation] = useState(0);
-  const [MiscEntertainment, setMiscEntertainment] = useState(0);
-  const [MiscHobbySport, setMiscHobbySport] = useState(0);
-  const [MiscGiftDonation, setMiscGiftDonation] = useState(0);
+  const [LivingFood, setLivingFood] = useState(localStorage.getItem("user_living_food") || 0);
+  const [LivingClothing, setLivingClothing] = useState(localStorage.getItem("user_living_clothing") || 0);
+  const [LivingHouseholdSupplies, setLivingHouseholdSupplies] = useState(localStorage.getItem("user_living_household_supplies") || 0);
+  const [LviningOtherExpense, setLviningOtherExpense] = useState(localStorage.getItem("user_living_other_expense") || 0);
 
-  
-  const [PaymentVendor, setPaymentVendor] = useState("");
-  const [PaymentDate, setPaymentDate] = useState("");
-  const [PaymentAmount, setPaymentAmount] = useState(0);
-  const [paymentSuccess, setPaymentSuccess] = useState(false);
-  
-  const [totalBudgetOfUser, setTotalBudgetOfUser] = useState(0);
-  const [totalExpenseOfUser, setTotalExpenseOfUser] = useState(0);
-  const [totalInvestmentOfUser, setTotalInvestmentOfUser] = useState(0);
+  const [DebtOtherLoan, setDebtOtherLoan] = useState(localStorage.getItem("user_debt_other_loan") || 0);
+  const [DebtVehicleLoan, setDebtVehicleLoan] = useState(localStorage.getItem("user_debt_vehicle_loan") || 0);
+  const [DebtEducationLoan, setDebtEducationLoan] = useState(localStorage.getItem("user_debt_education_loan") || 0);
+  const [DebtCreditCard, setDebtCreditCard] = useState(localStorage.getItem("user_debt_credit_card") || 0);
 
+  const [MiscTravelVacation, setMiscTravelVacation] = useState(localStorage.getItem("user_misc_travel_vacation") || 0);
+  const [MiscEntertainment, setMiscEntertainment] = useState(localStorage.getItem("user_misc_entertainment") || 0);
+  const [MiscHobbySport, setMiscHobbySport] = useState(localStorage.getItem("user_misc_hobby_sport") || 0);
+  const [MiscGiftDonation, setMiscGiftDonation] = useState(localStorage.getItem("user_misc_gift_donation") || 0);
+
+  const [PaymentVendor, setPaymentVendor] = useState(localStorage.getItem("payment_vendor") || "");
+  const [PaymentDate, setPaymentDate] = useState(localStorage.getItem("payment_date") || "");
+  const [PaymentAmount, setPaymentAmount] = useState(localStorage.getItem("payment_amount") || 0);
+  const [paymentSuccess, setPaymentSuccess] = useState(localStorage.getItem("payment_success") === 'true' || false);
+
+  const [totalBudgetOfUser, setTotalBudgetOfUser] = useState(localStorage.getItem("total_budget_of_user") || 0);
+  const [totalExpenseOfUser, setTotalExpenseOfUser] = useState(localStorage.getItem("total_expense_of_user") || 0);
+  const [totalInvestmentOfUser, setTotalInvestmentOfUser] = useState(localStorage.getItem("total_investment_of_user") || 0);
+
+  React.useEffect(() => {
+    localStorage.setItem("user_salary", salary.toString());
+    localStorage.setItem("user_pension", pension.toString());
+    localStorage.setItem("user_investment", investments.toString());
+    localStorage.setItem("user_otherincome", otherIncome.toString());
+
+    localStorage.setItem("user_home_mortgage", HomeMortage.toString());
+    localStorage.setItem("user_home_insurance", HomeInsurance.toString());
+    localStorage.setItem("user_home_maintenance", HomeMaintainance.toString());
+    localStorage.setItem("user_home_utilities", HomeUtilities.toString());
+
+    localStorage.setItem("user_living_food", LivingFood.toString());
+    localStorage.setItem("user_living_clothing", LivingClothing.toString());
+    localStorage.setItem("user_living_household_supplies", LivingHouseholdSupplies.toString());
+    localStorage.setItem("user_living_other_expense", LviningOtherExpense.toString());
+
+    localStorage.setItem("user_debt_other_loan", DebtOtherLoan.toString());
+    localStorage.setItem("user_debt_vehicle_loan", DebtVehicleLoan.toString());
+    localStorage.setItem("user_debt_education_loan", DebtEducationLoan.toString());
+    localStorage.setItem("user_debt_credit_card", DebtCreditCard.toString());
+
+    localStorage.setItem("user_misc_travel_vacation", MiscTravelVacation.toString());
+    localStorage.setItem("user_misc_entertainment", MiscEntertainment.toString());
+    localStorage.setItem("user_misc_hobby_sport", MiscHobbySport.toString());
+    localStorage.setItem("user_misc_gift_donation", MiscGiftDonation.toString());
+
+    localStorage.setItem("payment_vendor", PaymentVendor);
+    localStorage.setItem("payment_date", PaymentDate);
+    localStorage.setItem("payment_amount", PaymentAmount.toString());
+    localStorage.setItem("payment_success", paymentSuccess.toString());
+
+    localStorage.setItem("total_budget_of_user", totalBudgetOfUser.toString());
+    localStorage.setItem("total_expense_of_user", totalExpenseOfUser.toString());
+    localStorage.setItem("total_investment_of_user", totalInvestmentOfUser.toString());
+  }, [
+    salary, pension, investments, otherIncome,
+    HomeMortage, HomeInsurance, HomeMaintainance, HomeUtilities,
+    LivingFood, LivingClothing, LivingHouseholdSupplies, LviningOtherExpense,
+    DebtOtherLoan, DebtVehicleLoan, DebtEducationLoan, DebtCreditCard,
+    MiscTravelVacation, MiscEntertainment, MiscHobbySport, MiscGiftDonation,
+    PaymentVendor, PaymentDate, PaymentAmount, paymentSuccess,
+    totalBudgetOfUser, totalExpenseOfUser, totalInvestmentOfUser
+  ]);
 
   useEffect(() => {
     const totalBudget =
@@ -53,7 +98,12 @@ function UserExpense() {
       parseFloat(LivingFood) +
       parseFloat(LivingClothing) +
       parseFloat(LivingHouseholdSupplies) +
-      parseFloat(LviningOtherExpense);
+      parseFloat(LviningOtherExpense)+
+      parseFloat(investments)+
+      parseFloat(MiscGiftDonation)+
+      parseFloat(MiscHobbySport)+
+      parseFloat(MiscEntertainment) +
+      parseFloat(MiscTravelVacation);
     setTotalExpenseOfUser(totalExpense);
     localStorage.setItem("total_expenses", totalExpense.toString());
   }, [
@@ -65,6 +115,11 @@ function UserExpense() {
     LivingClothing,
     LivingHouseholdSupplies,
     LviningOtherExpense,
+    investments,
+    MiscGiftDonation,
+    MiscHobbySport,
+    MiscEntertainment,
+    MiscTravelVacation,
   ]);
 
   useEffect(() => {
@@ -85,14 +140,19 @@ function UserExpense() {
 
   const handlePayment = () => {
     setPaymentSuccess(true);
+    localStorage.setItem("vendor_name", PaymentVendor);
+    localStorage.setItem("vendor_date", PaymentDate.toString());
+    localStorage.setItem("vendor_amount", PaymentAmount.toString());
+
     setTimeout(() => {
       setPaymentVendor("");
       setPaymentDate("");
       setPaymentAmount(0);
       setPaymentSuccess(false);
-    }, 2000);
+    }, 1000);
   };
 
+  
 
   return (
     <div className="h-full w-full p-4">

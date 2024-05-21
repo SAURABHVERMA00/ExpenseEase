@@ -61,11 +61,11 @@ const Card = () => {
               alt="banckground"
             />
 
-            <div className="absolute top-3 left-4">
-              <img src="./chip.png" alt="" width={40} />
+            <div className="absolute top-9 left-6">
+              <img src="/chip.png" alt="" width={50} />
             </div>
-            <div className="absolute top-3 right-5  ">
-              <img src="./mastercard.png" alt="mastercrd  " width={80} />
+            <div className="absolute top-8 right-10  ">
+              <img src="/mastercard.png" alt="mastercrd  " width={100} />
             </div>
             <div className="absolute top-24 left-10 py-10">
               <p className="text-white text-2xl font-semibold">

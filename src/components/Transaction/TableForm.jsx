@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { useState,useEffect } from 'react';
 
 const TableForm = () => {
   return (
@@ -8,7 +9,7 @@ const TableForm = () => {
           <tr className="">
             <td className="pr-12 font-semibold text-lg">12/12/2021</td>
             <td className="pr-24 font-semibold text-lg">Amazon</td>
-            <td  className=" pr-14   " ><img src="./message.png" alt="" /></td>
+            <td className=" pr-14   " ><img src="/message.png" alt="" /></td>
             <td className="text-lg  font-semibold">Rs. 1200</td>
           </tr>
         </tbody>

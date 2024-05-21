@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
 // import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import Monthly_analyze from './Analysis/Monthly_analyze';
+import TotalAnalyze from './Analysis/TotalAnalyze';
 
 
 
 
 function Dashboard() {
-
+    const navigate = useNavigate();
 
     const [cardDetails, setCardDetails] = useState({
         cardHolderName: "",
-        cardNumber  : "",
+        cardNumber: "",
         expiryDate: "",
         cvv: "",
     });
@@ -95,11 +98,11 @@ function Dashboard() {
             </svg>
         ),
     };
-    const [totalBudget, setTotalBudget] = React.useState(0);
-    const [totalExpenses, setTotalExpenses] = React.useState(0);
-    const [totalInvestment, setTotalInvestment] = React.useState(0);
-    const [UserRemainingBalance, setUserRemainingBalance] = React.useState(0);
-
+    const [totalBudget, setTotalBudget] = React.useState(localStorage.getItem("total_budget") || 0);
+    const [totalExpenses, setTotalExpenses] = React.useState(localStorage.getItem("total_expenses") || 0);
+    const [totalInvestment, setTotalInvestment] = React.useState(localStorage.getItem("total_investment") || 0);
+    const [UserRemainingBalance, setUserRemainingBalance] = React.useState(totalBudget - totalExpenses || 0);
+    const [totalSavings, setTotalSaving] = useState(0);
 
 
     React.useEffect(() => {
@@ -113,10 +116,17 @@ function Dashboard() {
         if (storedTotalInvestment) setTotalInvestment(parseFloat(storedTotalInvestment));
 
         const remainingBalance = parseFloat(storedTotalBudget) - parseFloat(storedTotalExpenses);
-        if (remainingBalance) setUserRemainingBalance(remainingBalance);
+
+        if (remainingBalance) {
+            const savings = remainingBalance * 0.20;
+            setTotalSaving(savings)
+            setUserRemainingBalance(remainingBalance - savings)
+        };
+
+
+
     }, []);
 
-    console.log(totalBudget);
 
 
     const AtmCard = ({ selectedCurrency, handleCurrencyChange, UserBalance }) => (
@@ -195,7 +205,12 @@ function Dashboard() {
                     <div className='h-3 w-3 rounded-full bg-green-500'></div>
                 </div>
             </div>
-            <button className='p-1 bg-sky-200 rounded-full w-full flex justify-center items-center space-x-2 h-10'
+            <button
+                onClick={() => {
+                    navigate("/user/card");
+                    localStorage.setItem("current_menu", "Card");
+                }}
+                className='p-1 bg-sky-200 rounded-full w-full flex justify-center items-center space-x-2 h-10'
 
             >
                 <svg xmlns="http://www.w3.org/2000/svg"
@@ -248,8 +263,12 @@ function Dashboard() {
                     <BudgetCard
                         icon={budgetIcons.savings}
                         title="Total Savings"
-                        amount={<span>12000</span>}
+                        amount={totalSavings}
                     />
+                </div>
+
+                <div className='bg-white mt-4 rounded-xl p-3    '>
+                    <Monthly_analyze />
                 </div>
             </div>
             {/* YOUR CARD SECTION */}
@@ -259,7 +278,9 @@ function Dashboard() {
                     handleCurrencyChange={handleCurrencyChange}
                     UserBalance={UserRemainingBalance}
                 />
-
+                <div className=' h-[195px] flex justify-center items-center border-2 rounded-xl mt-3 border-sky-200'>
+                    <TotalAnalyze />
+                </div>
             </div>
         </div>
     );

@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import ExpenseEaselogo from "../assets/ExpenseEase.png";
 import { Outlet } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -20,7 +20,31 @@ function MainPageDashboard() {
     else setTheMenu(menu_Dashboard);
   }, []);
 
-  let UserName = "Shoib";
+  
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    dob: '',
+    phoneNumber: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    agreementChecked: false
+  });
+
+  useEffect(() => {
+    const storedFormData = localStorage.getItem('userData');
+    if (storedFormData) {
+      setFormData(JSON.parse(storedFormData));
+    }
+  }, []);
+
+  const [UserName, setUserName] = useState(formData.firstName);
+
+  useEffect(() => {
+    setUserName(formData.firstName);
+  }, [formData]);
+
 
   return (
     <div className="h-full w-full flex">
@@ -223,7 +247,15 @@ function MainPageDashboard() {
         </div>
 
         <div className=" flex justify-center items-center p-3 mb-2  ">
-          <button className="flex space-x-1 justify-center items-center hover:text-sky-500">
+          <button className="flex space-x-1 justify-center items-center hover:text-sky-500"
+            onClick={() => {
+              setTimeout(() => {
+                alert("Logging out succesfully!")
+                navigate("/");
+              }, 500)
+
+
+            }}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
